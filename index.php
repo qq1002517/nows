@@ -44,19 +44,17 @@
 	
 						
 	<?php
-	$sql="select * from soul order by rand( ) limit 1";
-	$rs=mysql_query($sql);
-	?>		
-			<?php
-		while($rows=mysql_fetch_assoc($rs))
-		{
-		?>		
-						
-						<span id="sentence" style="font-size: 2rem;"><?php echo $rows["title"]?></span>
-			<?php
-		 }
-		?>
-	            	
+        $sql="select * from soul order by rand( ) limit 1";
+        $result=mysqli_query($conn,$sql);
+        if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                 echo "<span id='sentence' style='font-size: 2rem;'>" . $row["title"] . "</span>";
+                 }
+         } else {
+          echo "没有找到对象";
+         }
+        ?>
+
 
 
 </div>
